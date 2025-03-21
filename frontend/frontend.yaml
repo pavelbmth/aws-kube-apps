@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: bmt-app
+  labels:
+    app.kubernetes.io/name: frontend
 spec:
   replicas: 2
   selector:
@@ -14,7 +15,5 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: frontend
-          image: your-dockerhub-user/your-frontend-image:latest  # Replace with your custom frontend image
-          ports:
-            - containerPort: 80
+        - name: nginx
+          image: nginx
