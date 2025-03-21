@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  labels:
-    app.kubernetes.io/name: frontend
+  namespace: bmt-app
 spec:
   replicas: 2
   selector:
@@ -15,5 +14,10 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: nginx
-          image: nginx
+        - name: frontend
+          image: nginx  # Replace this with your actual frontend image
+          env:
+            - name: BACKEND_URL
+              value: "http://backend.bmt-app.svc.cluster.local"
+          ports:
+            - containerPort: 80
