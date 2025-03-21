@@ -15,9 +15,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: nginx  # Replace this with your actual frontend image
-          env:
-            - name: BACKEND_URL
-              value: "http://backend.bmt-app.svc.cluster.local"
+          image: your-dockerhub-user/your-frontend-image:latest  # Replace with your custom frontend image
           ports:
             - containerPort: 80
